@@ -11,6 +11,8 @@ To create a certificate, we need several other things first:
 
 CSR is a message for the CA, signed by an entity's private key. It contains info such as an email, an organization's full name, a country code, a city, a key type and its length, etc. An entity sends this message to a CA with the intent to have it signed by the CA's private key.
 
+[CSR](https://www.ssldragon.com/blog/certificate-signing-request-csr/)
+
 ## TF module and resources docs
 
 - [Modules](https://developer.hashicorp.com/terraform/tutorials/modules)

@@ -1,10 +1,10 @@
 ### Site metadata ###
 
-site_name: Job coding assignment 
-site_description: Job coding assignment 
-site_url: https://ujstor.github.io/coding-assignment/
+site_name: Infra assignment 
+site_description: Infra assignment 
+site_url: https://ujstor.github.io/infra-assignment/
 
-repo_url: https://github.com/Ujstor/coding-assignment
+repo_url: https://github.com/Ujstor/infra-assignment
 
 ### Build settings ###
 
@@ -27,7 +27,11 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
 nav:
-  - Home: index.md
+  - Terraform: 
+    - Assigment: terraform.md
+    - Resurces: terraform/resources.md
+  - Kubernetes: 
+    - Assigment: kubernetes.md
 
 extra:
     social:

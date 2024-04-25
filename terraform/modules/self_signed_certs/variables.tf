@@ -12,12 +12,12 @@ variable "certificate_authority" {
 
 variable "server_certificates" {
   description = "Map containing var for server certificates."
-  type = object({
+  type = map(object({
     common_name  = string
     country      = string
     locality     = string
     organization = string
     unit         = string
     validity     = number
-  })
+  }))
 }

@@ -47,3 +47,28 @@ variable "example_map" {
   }
 }
 ```
+Terraforms for_each loop iterates over a map or set of strings, creating one resource per item.
+
+- [for_each](https://www.slingacademy.com/article/ways-to-use-loops-in-terraform-with-examples/)
+
+```hcl
+variable "instance_details" {
+  type = map(object({
+    ami           = string
+    instance_type = string
+  }))
+}
+
+resource "aws_instance" "example" {
+  for_each = var.instance_details
+
+  ami           = each.value.ami
+  instance_type = each.value.instance_type
+  tags = {
+    Name = "Instance-${each.key}"
+  }
+}
+```
+
+- [for looop](https://developer.hashicorp.com/terraform/language/expressions/for)
+- [Sensitive data output](https://support.hashicorp.com/hc/en-us/articles/5175257151891-How-to-output-sensitive-data-with-Terraform)

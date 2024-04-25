@@ -27,9 +27,11 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
 nav:
+  - Home: index.md
   - Terraform: 
     - Assigment: terraform.md
     - Resurces: terraform/resources.md
+    - Outputs: terraform/outputs.md
   - Kubernetes: 
     - Assigment: kubernetes.md
 

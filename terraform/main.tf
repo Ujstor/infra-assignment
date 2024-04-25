@@ -11,19 +11,29 @@ module "self_signed_certs" {
   }
 
   server_certificates = {
-    common_name  = "server1.site.contoso"
-    country      = "DE"
-    locality     = "Munich"
-    organization = "contoso"
-    unit         = "site"
-    validity     = 8760
+    server-1 = {
+      common_name  = "server1.site.contoso"
+      country      = "DE"
+      locality     = "Munich"
+      organization = "contoso"
+      unit         = "site"
+      validity     = 8760
+    }
+    server-2 = {
+      common_name  = "server2.site.contoso"
+      country      = "DE"
+      locality     = "Munich"
+      organization = "contoso"
+      unit         = "site"
+      validity     = 8760
+    }
+
   }
 }
 
 output "certificate_authority_private_key" {
   description = "Private key of certificate authority."
   value       = module.self_signed_certs.certificate_authority_private_key
-  sensitive   = true
 }
 
 output "certificate_authority_certificate" {
@@ -31,15 +41,7 @@ output "certificate_authority_certificate" {
   value       = module.self_signed_certs.certificate_authority_certificate
 }
 
-output "server_certificate" {
-  value = module.self_signed_certs.server_certificate
-}
-
-output "csr" {
-  value = module.self_signed_certs.csr
-}
-
-output "server_private_key" {
-  value     = module.self_signed_certs.server_private_key
-  sensitive = true
+output "server_certificates" {
+  description = "Server certificates."
+  value       = module.self_signed_certs.server_certificates
 }

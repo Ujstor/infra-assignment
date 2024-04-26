@@ -1,4 +1,4 @@
-The repository contains two assignments assessing infrastructure and Kubernetes skills. They can be found together with solutions in [the documentation](https://ujstor.github.io/infra-assignment/).
+The repository contains two assignments assessing infrastructure and Kubernetes skills. They can be found together with solutions in the [documentation](https://ujstor.github.io/infra-assignment/).
 ## Terraform project tree
 
 ```bash

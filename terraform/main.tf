@@ -20,14 +20,8 @@ module "self_signed_certs" {
       validity     = 8760
     }
     server-2 = {
-      common_name  = "server2.site.contoso"
-      country      = "DE"
-      locality     = "Munich"
-      organization = "contoso"
-      unit         = "site"
-      validity     = 8760
+      common_name = "server2.site.contoso"
     }
-
   }
 }
 

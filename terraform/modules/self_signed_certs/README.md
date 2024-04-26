@@ -1,3 +1,5 @@
+## Requirements
+
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=0.15.1 |
@@ -28,13 +30,14 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_certificate_authority"></a> [certificate\_authority](#input\_certificate\_authority) | Object containing var for certificate authority. | <pre>object({<br>    common_name  = string<br>    country      = string<br>    locality     = string<br>    organization = string<br>    unit         = string<br>    validity     = number<br>  })</pre> | n/a | yes |
-| <a name="input_server_certificates"></a> [server\_certificates](#input\_server\_certificates) | Map containing var for server certificates. | <pre>map(object({<br>    common_name  = string<br>    country      = string<br>    locality     = string<br>    organization = string<br>    unit         = string<br>    validity     = number<br>  }))</pre> | n/a | yes |
+| <a name="input_server_certificates"></a> [server\_certificates](#input\_server\_certificates) | Map containing var for server certificates. | <pre>map(object({<br>    common_name  = optional(string)<br>    country      = optional(string)<br>    locality     = optional(string)<br>    organization = optional(string)<br>    unit         = optional(string)<br>    validity     = optional(number)<br>  }))</pre> | n/a | yes |
+
+If server_certificates validity is not specified, the validity will be set to 1 year.
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_certificate_authority_certificate"></a> [certificate\_authority\_certificate](#output\_certificate\_authority\_certificate) | Certificate of certificate authority. |
-| <a name="output_certificate_authority_private_key"></a> [certificate\_authority\_private\_key](#output\_certificate\_authority\_private\_key) | Private key of certificate authority. |
-| <a name="output_server_certificates"></a> [server\_certificates](#output\_server\_certificates) | Server certificates. |
-
+| <a name="output_certificate_authority_certificate"></a> [certificate\_authority\_certificate](#output\_certificate\_authority\_certificate) | Certificate authority private key |
+| <a name="output_certificate_authority_private_key"></a> [certificate\_authority\_private\_key](#output\_certificate\_authority\_private\_key) | Certificate authority certificate |
+| <a name="output_server_certificates"></a> [server\_certificates](#output\_server\_certificates) | Map of server certificates with private\_key, certificate, csr |

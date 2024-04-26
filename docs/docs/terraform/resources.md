@@ -1,6 +1,5 @@
-## Self-signed cert
 
-[Self-signed-cert](https://dev.to/deathroll/trusted-self-signed-tls-certificates-for-dummies-w-thorough-explanations-included-da7)
+- [Self-signed-cert](https://dev.to/deathroll/trusted-self-signed-tls-certificates-for-dummies-w-thorough-explanations-included-da7)
 
 To create a certificate, we need several other things first:
 
@@ -11,9 +10,7 @@ To create a certificate, we need several other things first:
 
 CSR is a message for the CA, signed by an entity's private key. It contains info such as an email, an organization's full name, a country code, a city, a key type and its length, etc. An entity sends this message to a CA with the intent to have it signed by the CA's private key.
 
-[CSR](https://www.ssldragon.com/blog/certificate-signing-request-csr/)
-
-## TF module and resources docs
+- [CSR](https://www.ssldragon.com/blog/certificate-signing-request-csr/)
 
 - [Modules](https://developer.hashicorp.com/terraform/tutorials/modules)
 - [Tls provider](https://registry.terraform.io/providers/hashicorp/tls/latest/docs)
@@ -47,5 +44,3 @@ resource "aws_instance" "example" {
 - [for looop](https://developer.hashicorp.com/terraform/language/expressions/for)
 - [Sensitive data output](https://support.hashicorp.com/hc/en-us/articles/5175257151891-How-to-output-sensitive-data-with-Terraform)
 - [Tf docs](https://terraform-docs.io/user-guide/introduction/)
-
-## TF API output module 

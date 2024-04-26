@@ -1,8 +1,8 @@
 terraform {
   required_providers {
-    tls = {
-      source  = "hashicorp/tls"
-      version = "4.0.5"
+    curl = {
+      source  = "anschoewe/curl"
+      version = "1.0.2"
     }
   }
   required_version = ">=0.15.1"

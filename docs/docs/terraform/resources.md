@@ -21,32 +21,6 @@ CSR is a message for the CA, signed by an entity's private key. It contains info
 
 The example below shows a map of type ‘object’. Values are complex objects with multiple attributes represented by key-value pairs.
 
-```hcl
-variable "example_map" {
-  type = map(object({
-    name = string
-    enemies_destroyed = number
-    badguy = bool
-  }))
-  default = {
-    key1 = {
-      name = "luke"
-      enemies_destroyed = 4252
-      badguy = false
-    }
-    key2 = {
-      name = "yoda"
-      enemies_destroyed = 900
-      badguy = false
-    }
-    key3 = {
-      name = "darth"
-      enemies_destroyed=  20000056894
-      badguy = true
-    }
-  }
-}
-```
 Terraforms for_each loop iterates over a map or set of strings, creating one resource per item.
 
 - [for_each](https://www.slingacademy.com/article/ways-to-use-loops-in-terraform-with-examples/)
@@ -72,3 +46,6 @@ resource "aws_instance" "example" {
 
 - [for looop](https://developer.hashicorp.com/terraform/language/expressions/for)
 - [Sensitive data output](https://support.hashicorp.com/hc/en-us/articles/5175257151891-How-to-output-sensitive-data-with-Terraform)
+- [Tf docs](https://terraform-docs.io/user-guide/introduction/)
+
+## TF API output module 

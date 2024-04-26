@@ -1,15 +1,15 @@
 output "certificate_authority_private_key" {
-  description = "Private key of certificate authority."
+  description = "Certificate authority certificate"
   value       = nonsensitive(tls_self_signed_cert.ca.private_key_pem)
 }
 
 output "certificate_authority_certificate" {
-  description = "Certificate of certificate authority."
+  description = "Certificate authority private key"
   value       = tls_self_signed_cert.ca.cert_pem
 }
 
 output "server_certificates" {
-  description = "Server certificates."
+  description = "Map of server certificates with private_key, certificate, csr"
   value = {
     for key, _ in var.server_certificates :
     key => {

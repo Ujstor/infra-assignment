@@ -31,7 +31,8 @@ nav:
   - Terraform: 
     - Assigment: terraform.md
     - Resurces: terraform/resources.md
-    - Outputs: terraform/outputs.md
+    - Output Cert: terraform/output-cert.md
+    - Output API: terraform/output-api.md
   - Kubernetes: 
     - Assigment: kubernetes.md
 

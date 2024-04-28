@@ -1,0 +1,27 @@
+replicaCount: 3
+
+cluster:
+  seedCount: 3
+
+pdb:
+  maxUnavailable: 2
+  minAvailable: 1
+
+jvm:
+  extraOpts: "-Xms256m -Xmx2G"
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "64Mi"
+  limits:
+    cpu: "1"
+    memory: "2Gi"
+
+podAntiAffinityPreset: "hard"
+
+nodeSelector:
+  type: worker
+
+persistence:
+  enabled: false

@@ -35,6 +35,11 @@ nav:
     - Output API: terraform/output-api.md
   - Kubernetes: 
     - Assigment: kubernetes.md
+    - Resources: kubernetes/resources.md
+    - Start cluster: kubernetes/start-cluster.md
+    - Cassandra cluster: kubernetes/cassandra-cluster.md
+    - CSQL statements: kubernetes/csql-statements.md
+    - Node admin & cassandra availability: kubernetes/nodes-admin-cassandra-availability.md 
 
 extra:
     social:

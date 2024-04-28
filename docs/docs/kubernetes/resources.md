@@ -2,7 +2,11 @@
 - [Pod Affinity Anti-Affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node)
 - [Tuning JVM](https://docs.datastax.com/en/archived/cassandra/2.0/cassandra/operations/ops_tune_jvm_c.html)
 - [Required CPU and Memory](https://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architecturePlanningHardware_c.html)
+- [Cassandra replocation](https://www.baeldung.com/cassandra-replication-partitioning)
+- [csql](https://docs.datastax.com/en/cql/cassandra/docs/index.html)
 - [NodeTool](https://cassandra.apache.org/doc/latest/cassandra/troubleshooting/use_nodetool.html)
+- [kubectl cordon](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_cordon/)
+- [kubectl drain](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_drain/)
 
 ## Cassandra chart readme
 

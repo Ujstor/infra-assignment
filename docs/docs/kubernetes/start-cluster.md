@@ -2,7 +2,7 @@
 k3d cluster create test-assignment \
   --servers 3 \
   --agents 3 \
-  --k3s-node-label "type=control@server:0" \
+  --k3s-node-label "type=control@server:0,1,2" \
   --k3s-node-label "type=worker@agent:0,1,2"
 
 INFO[0000] Prep: Network
@@ -108,13 +108,13 @@ a2a8200404d9   rancher/k3s:v1.28.8-k3s1         "/bin/k3d-entrypoint…"   6 min
 ```
 
 ```bash
-kubectl get nodes --show-labels
+ kubectl get nodes --show-labels
 
 NAME                           STATUS   ROLES                       AGE   VERSION        LABELS
-k3d-test-assignment-agent-0    Ready    <none>                      17m   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-agent-0,kubernetes.io/os=linux,node.kubernetes.io/instance-type=k3s,type=worker
-k3d-test-assignment-agent-1    Ready    <none>                      17m   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-agent-1,kubernetes.io/os=linux,node.kubernetes.io/instance-type=k3s,type=worker
-k3d-test-assignment-agent-2    Ready    <none>                      17m   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-agent-2,kubernetes.io/os=linux,node.kubernetes.io/instance-type=k3s,type=worker
-k3d-test-assignment-server-0   Ready    control-plane,etcd,master   17m   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-server-0,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=true,node-role.kubernetes.io/etcd=true,node-role.kubernetes.io/master=true,node.kubernetes.io/instance-type=k3s,type=control
-k3d-test-assignment-server-1   Ready    control-plane,etcd,master   17m   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-server-1,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=true,node-role.kubernetes.io/etcd=true,node-role.kubernetes.io/master=true,node.kubernetes.io/instance-type=k3s
-k3d-test-assignment-server-2   Ready    control-plane,etcd,master   17m   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-server-2,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=true,node-role.kubernetes.io/etcd=true,node-role.kubernetes.io/master=true,node.kubernetes.io/instance-type=k3s
+k3d-test-assignment-agent-0    Ready    <none>                      17s   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-agent-0,kubernetes.io/os=linux,node.kubernetes.io/instance-type=k3s,type=worker
+k3d-test-assignment-agent-1    Ready    <none>                      17s   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-agent-1,kubernetes.io/os=linux,node.kubernetes.io/instance-type=k3s,type=worker
+k3d-test-assignment-agent-2    Ready    <none>                      17s   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-agent-2,kubernetes.io/os=linux,node.kubernetes.io/instance-type=k3s,type=worker
+k3d-test-assignment-server-0   Ready    control-plane,etcd,master   51s   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-server-0,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=true,node-role.kubernetes.io/etcd=true,node-role.kubernetes.io/master=true,node.kubernetes.io/instance-type=k3s,type=control
+k3d-test-assignment-server-1   Ready    control-plane,etcd,master   35s   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-server-1,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=true,node-role.kubernetes.io/etcd=true,node-role.kubernetes.io/master=true,node.kubernetes.io/instance-type=k3s,type=control
+k3d-test-assignment-server-2   Ready    control-plane,etcd,master   19s   v1.28.8+k3s1   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=k3s,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k3d-test-assignment-server-2,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=true,node-role.kubernetes.io/etcd=true,node-role.kubernetes.io/master=true,node.kubernetes.io/instance-type=k3s,type=control
 ```

@@ -124,6 +124,26 @@ To connect to your database from outside the cluster execute the following comma
 ```
 
 ```bash
+#Custom values can be past directly
+
+helm install cassandra bitnami-azure/cassandra \
+  --version "8.0.2" \
+  -n cassandra \
+  --set replicaCount=3 \
+  --set cluster.seedCount=3 \
+  --set pdb.maxUnavailable=2 \
+  --set pdb.minAvailable=1 \
+  --set jvm.extraOpts="-Xms256m -Xmx2G" \
+  --set resources.requests.cpu="100m" \
+  --set resources.requests.memory="64Mi" \
+  --set resources.limits.cpu="1" \
+  --set resources.limits.memory="2Gi" \
+  --set podAntiAffinityPreset="hard" \
+  --set nodeSelector.type="worker" \
+  --set persistence.enabled=false
+```
+
+```bash
 kubectl ns cassandra
 
 Context "k3d-test-assignment" modified.
@@ -147,69 +167,14 @@ statefulset.apps/cassandra   3/3     4m28s
 ```
 
 ```bash
-kubectl exec pod/cassandra-0 -- nodetool status
+ kubectl exec pod/cassandra-0 -- nodetool status
 
 Datacenter: datacenter1
 =======================
 Status=Up/Down
 |/ State=Normal/Leaving/Joining/Moving
---  Address     Load       Tokens  Owns (effective)  Host ID                               Rack
-UN  10.42.5.3   73.41 KiB  256     74.0%             883f225e-b93a-41f3-8c37-8144d5af613d  rack1
-UN  10.42.3.11  73.46 KiB  256     66.0%             f1b2d1e0-9025-4aec-8045-7f1f9906830c  rack1
-UN  10.42.4.7   73.45 KiB  256     60.0%             b6c85fa6-7a3f-446a-a39e-fa1d92e596ce  rack1
+--  Address    Load       Tokens  Owns (effective)  Host ID                               Rack
+UN  10.42.5.3  73.49 KiB  256     60.0%             4e63dc18-6870-4ce4-b3fc-6a802794815e  rack1
+UN  10.42.3.3  73.45 KiB  256     74.0%             b3fd4fe9-a9b2-44a6-b826-fe0d1d99df2d  rack1
+UN  10.42.4.3  73.42 KiB  256     66.0%             e548c921-c108-4a63-a41e-35aae0e85920  rack1
 ```
-
-```bash
-```
-
-```bash
-
-```
-
-```bash
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-

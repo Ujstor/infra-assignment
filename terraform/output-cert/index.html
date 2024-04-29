@@ -1,0 +1,1240 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Infra assignment">
+      
+      
+      
+        <link rel="canonical" href="https://ujstor.github.io/infra-assignment/terraform/output-cert/">
+      
+      
+        <link rel="prev" href="../resources/">
+      
+      
+        <link rel="next" href="../output-api/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
+    
+    
+      
+        <title>Output Cert - Infra assignment</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+    
+      
+    
+    <script defer data-domain="ujstor.github.io/infra-assignment" src="https://analytics.ujstor.com/js/script.js"></script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Infra assignment" class="md-header__button md-logo" aria-label="Infra assignment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Infra assignment
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Output Cert
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Ujstor/infra-assignment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Infra assignment" class="md-nav__button md-logo" aria-label="Infra assignment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Infra assignment
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Ujstor/infra-assignment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Terraform
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Terraform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assigment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resurces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Output Cert
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../output-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Output API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assigment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/start-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Start cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/cassandra-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cassandra cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/csql-statements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSQL statements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/nodes-admin-cassandra-availability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node admin & cassandra availability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Output Cert</h1>
+
+<pre><code class="language-bash"> terraform init
+
+Initializing the backend...
+Initializing modules...
+- self_signed_certs in modules/self_signed_certs
+
+Initializing provider plugins...
+- Finding hashicorp/tls versions matching &quot;4.0.5&quot;...
+- Installing hashicorp/tls v4.0.5...
+- Installed hashicorp/tls v4.0.5 (signed by HashiCorp)
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run &quot;terraform init&quot; in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running &quot;terraform plan&quot; to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+</code></pre>
+<pre><code class="language-bash"> terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.self_signed_certs.tls_cert_request.server[&quot;server-1&quot;] will be created
+  + resource &quot;tls_cert_request&quot; &quot;server&quot; {
+      + cert_request_pem = (known after apply)
+      + id               = (known after apply)
+      + key_algorithm    = (known after apply)
+      + private_key_pem  = (sensitive value)
+
+      + subject {
+          + common_name         = &quot;server1.site.contoso&quot;
+          + country             = &quot;DE&quot;
+          + locality            = &quot;Munich&quot;
+          + organization        = &quot;contoso&quot;
+          + organizational_unit = &quot;site&quot;
+        }
+    }
+
+  # module.self_signed_certs.tls_cert_request.server[&quot;server-2&quot;] will be created
+  + resource &quot;tls_cert_request&quot; &quot;server&quot; {
+      + cert_request_pem = (known after apply)
+      + id               = (known after apply)
+      + key_algorithm    = (known after apply)
+      + private_key_pem  = (sensitive value)
+
+      + subject {
+          + common_name = &quot;server2.site.contoso&quot;
+        }
+    }
+
+  # module.self_signed_certs.tls_locally_signed_cert.server[&quot;server-1&quot;] will be created
+  + resource &quot;tls_locally_signed_cert&quot; &quot;server&quot; {
+      + allowed_uses          = [
+          + &quot;server_auth&quot;,
+        ]
+      + ca_cert_pem           = (known after apply)
+      + ca_key_algorithm      = (known after apply)
+      + ca_private_key_pem    = (sensitive value)
+      + cert_pem              = (known after apply)
+      + cert_request_pem      = (known after apply)
+      + early_renewal_hours   = 0
+      + id                    = (known after apply)
+      + is_ca_certificate     = false
+      + ready_for_renewal     = false
+      + set_subject_key_id    = false
+      + validity_end_time     = (known after apply)
+      + validity_period_hours = 8760
+      + validity_start_time   = (known after apply)
+    }
+
+  # module.self_signed_certs.tls_locally_signed_cert.server[&quot;server-2&quot;] will be created
+  + resource &quot;tls_locally_signed_cert&quot; &quot;server&quot; {
+      + allowed_uses          = [
+          + &quot;server_auth&quot;,
+        ]
+      + ca_cert_pem           = (known after apply)
+      + ca_key_algorithm      = (known after apply)
+      + ca_private_key_pem    = (sensitive value)
+      + cert_pem              = (known after apply)
+      + cert_request_pem      = (known after apply)
+      + early_renewal_hours   = 0
+      + id                    = (known after apply)
+      + is_ca_certificate     = false
+      + ready_for_renewal     = false
+      + set_subject_key_id    = false
+      + validity_end_time     = (known after apply)
+      + validity_period_hours = 8760
+      + validity_start_time   = (known after apply)
+    }
+
+  # module.self_signed_certs.tls_private_key.ca will be created
+  + resource &quot;tls_private_key&quot; &quot;ca&quot; {
+      + algorithm                     = &quot;RSA&quot;
+      + ecdsa_curve                   = &quot;P224&quot;
+      + id                            = (known after apply)
+      + private_key_openssh           = (sensitive value)
+      + private_key_pem               = (sensitive value)
+      + private_key_pem_pkcs8         = (sensitive value)
+      + public_key_fingerprint_md5    = (known after apply)
+      + public_key_fingerprint_sha256 = (known after apply)
+      + public_key_openssh            = (known after apply)
+      + public_key_pem                = (known after apply)
+      + rsa_bits                      = 4096
+    }
+
+  # module.self_signed_certs.tls_private_key.server[&quot;server-1&quot;] will be created
+  + resource &quot;tls_private_key&quot; &quot;server&quot; {
+      + algorithm                     = &quot;RSA&quot;
+      + ecdsa_curve                   = &quot;P224&quot;
+      + id                            = (known after apply)
+      + private_key_openssh           = (sensitive value)
+      + private_key_pem               = (sensitive value)
+      + private_key_pem_pkcs8         = (sensitive value)
+      + public_key_fingerprint_md5    = (known after apply)
+      + public_key_fingerprint_sha256 = (known after apply)
+      + public_key_openssh            = (known after apply)
+      + public_key_pem                = (known after apply)
+      + rsa_bits                      = 4096
+    }
+
+  # module.self_signed_certs.tls_private_key.server[&quot;server-2&quot;] will be created
+  + resource &quot;tls_private_key&quot; &quot;server&quot; {
+      + algorithm                     = &quot;RSA&quot;
+      + ecdsa_curve                   = &quot;P224&quot;
+      + id                            = (known after apply)
+      + private_key_openssh           = (sensitive value)
+      + private_key_pem               = (sensitive value)
+      + private_key_pem_pkcs8         = (sensitive value)
+      + public_key_fingerprint_md5    = (known after apply)
+      + public_key_fingerprint_sha256 = (known after apply)
+      + public_key_openssh            = (known after apply)
+      + public_key_pem                = (known after apply)
+      + rsa_bits                      = 4096
+    }
+
+  # module.self_signed_certs.tls_self_signed_cert.ca will be created
+  + resource &quot;tls_self_signed_cert&quot; &quot;ca&quot; {
+      + allowed_uses          = [
+          + &quot;cert_signing&quot;,
+        ]
+      + cert_pem              = (known after apply)
+      + early_renewal_hours   = 0
+      + id                    = (known after apply)
+      + is_ca_certificate     = false
+      + key_algorithm         = (known after apply)
+      + private_key_pem       = (sensitive value)
+      + ready_for_renewal     = false
+      + set_authority_key_id  = false
+      + set_subject_key_id    = false
+      + validity_end_time     = (known after apply)
+      + validity_period_hours = 87600
+      + validity_start_time   = (known after apply)
+
+      + subject {
+          + common_name         = &quot;site.contoso&quot;
+          + country             = &quot;DE&quot;
+          + locality            = &quot;Munich&quot;
+          + organization        = &quot;contoso&quot;
+          + organizational_unit = &quot;site&quot;
+        }
+    }
+
+Plan: 8 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + certificate_authority_certificate = (known after apply)
+  + certificate_authority_private_key = (known after apply)
+  + server_certificates               = {
+      + server-1 = {
+          + certificate = (known after apply)
+          + csr         = (known after apply)
+          + private_key = (known after apply)
+        }
+      + server-2 = {
+          + certificate = (known after apply)
+          + csr         = (known after apply)
+          + private_key = (known after apply)
+        }
+    }
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+module.self_signed_certs.tls_private_key.ca: Creating...
+module.self_signed_certs.tls_private_key.server[&quot;server-1&quot;]: Creating...
+module.self_signed_certs.tls_private_key.server[&quot;server-2&quot;]: Creating...
+module.self_signed_certs.tls_private_key.server[&quot;server-2&quot;]: Creation complete after 1s [id=09c058c4d729344f896cd12d23bde9727f290301]
+module.self_signed_certs.tls_private_key.server[&quot;server-1&quot;]: Creation complete after 1s [id=0936f6aed02a8c11ec104ee7320d9f4535ed087c]
+module.self_signed_certs.tls_cert_request.server[&quot;server-2&quot;]: Creating...
+module.self_signed_certs.tls_cert_request.server[&quot;server-1&quot;]: Creating...
+module.self_signed_certs.tls_cert_request.server[&quot;server-1&quot;]: Creation complete after 0s [id=1ab101d9c71a3c07f0b3bc7191d7d192239b07c6]
+module.self_signed_certs.tls_cert_request.server[&quot;server-2&quot;]: Creation complete after 0s [id=1abecf37fc3fb361e1a2b80a64a608b9450eb506]
+module.self_signed_certs.tls_private_key.ca: Creation complete after 1s [id=d813e72d10e7188131b1fb016db08965c24a30c0]
+module.self_signed_certs.tls_self_signed_cert.ca: Creating...
+module.self_signed_certs.tls_self_signed_cert.ca: Creation complete after 0s [id=12878792340195351101032375134765420205]
+module.self_signed_certs.tls_locally_signed_cert.server[&quot;server-1&quot;]: Creating...
+module.self_signed_certs.tls_locally_signed_cert.server[&quot;server-2&quot;]: Creating...
+module.self_signed_certs.tls_locally_signed_cert.server[&quot;server-1&quot;]: Creation complete after 0s [id=328317067375566004161315438862049222652]
+module.self_signed_certs.tls_locally_signed_cert.server[&quot;server-2&quot;]: Creation complete after 0s [id=258174516333145034652960632955132875003]
+╷
+│ Warning: Potentially Invalid Certificate Authority
+│
+│   with module.self_signed_certs.tls_locally_signed_cert.server[&quot;server-2&quot;],
+│   on modules/self_signed_certs/main.tf line 40, in resource &quot;tls_locally_signed_cert&quot; &quot;server&quot;:
+│   40: resource &quot;tls_locally_signed_cert&quot; &quot;server&quot; {
+│
+│ Certificate provided as Authority does not appear to be a valid Certificate Authority. The resulting certificate might fail certificate validation.
+│
+│ (and one more similar warning elsewhere)
+╵
+
+Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+certificate_authority_certificate = &lt;&lt;EOT
+-----BEGIN CERTIFICATE-----
+MIIFVjCCAz6gAwIBAgIQCbBdfInKCAOxgoPYghOOrTANBgkqhkiG9w0BAQsFADBW
+MQswCQYDVQQGEwJERTEPMA0GA1UEBxMGTXVuaWNoMRAwDgYDVQQKEwdjb250b3Nv
+MQ0wCwYDVQQLEwRzaXRlMRUwEwYDVQQDEwxzaXRlLmNvbnRvc28wHhcNMjQwNDI2
+MjMxNDM4WhcNMzQwNDI0MjMxNDM4WjBWMQswCQYDVQQGEwJERTEPMA0GA1UEBxMG
+TXVuaWNoMRAwDgYDVQQKEwdjb250b3NvMQ0wCwYDVQQLEwRzaXRlMRUwEwYDVQQD
+EwxzaXRlLmNvbnRvc28wggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCT
+HheMAny7Tk+dhJb6yclNeyt8uicN3PdOhui/6RJLr14hPn7V2t93YZG4kWVaclvA
+uPClSBSiEM+hXSvyqQNsU8W5jHb9Z5RIZdJQ4BS7n2DHw/zdGjmb+Kq/GE7TU6+t
+NE82oE/+CKSps9awONGs8TTXM/pj60WvAjKP3abDzy59qItmnFLPCcaR1L9Zrrdh
+K/RNwAkHOr2xwksE9aOEnVgrLIxM6uoTAQKyJ5Io6Kw+zTIZ8sKh0rzCMu1Op71F
+G2WbggHJQul7t/7BnJgXOSRfGo83JPYPIyharbn30cvveY9N644uQZlKGqL2bwaT
+eJ5lKWD5OpCZUmnqEyUthWl0GZranMeqD08L9wbGhaMTNpWGhTpezDgLKpxh8UaU
+qOMAOsgNZC1HczhFTd+C+gJStUs6pWG4vOJ35BcDtfMw/Z01CJgu7etuk6G7bHZN
+DJHrpc0Noeee8vjUzObw7nj/9P4yqT85Ft7RMg2YHaWd2kzNajYhCGm/u1pHWxy3
+hRoZArnoB7dCnR88pjQeuR6Kj9F/k6OMppXBrzlLBCsVTEkEEOvSaodxny0fhhtr
+EsVWI2NUp2nq+qpIHIZTCQvGFoZBxn1LqlgODJ279oNVGN5B6yXN9iGeVuygXca9
+6f7CRTr1AlBwwtHKgVF/J5MmruIo2hMoU7NB+DBshQIDAQABoyAwHjAOBgNVHQ8B
+Af8EBAMCAgQwDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQsFAAOCAgEAU5KjOCxo
+ZLOc8SlNEup6jVZ2bhkGivL2033qaUbGSYCBd5GiZUMOyF/gqujLbZSaYMx15jah
+WERjn9yO5TkJKEB7pgESOtXwGs7v8MYnjein44QCsaNTTAL9hvIYUeS9hOEB7vEA
+cqjPM7QPes4TqBTcBVWo5bn0Dtxy9vad3RBFQpBF47If5kSLYGlITXsRXBFblF96
+0RhB0SSf9MV8PgM3c6ZT7uggkTGRJJ0RE/FGCpQ8tM6Lnz98JWsWwNeFcwRKzZGb
+8/sFr05QUagfteYt0xkpc8vkd0vyvkRG0/DqF/mhEHQx4u0VGgb87dWVMmleMUeN
+zv1+0pKiwFWgb3tv1rSGpZ+H93tr3ZBNK6mXb23Zg4TioZawAhcZkcIZ5NLXaShG
+KKf1gSpiJjv0pttU4EVVOsopnVoPIIs851++3G3Zf+lhna5djWhwmHvUrfIEjURV
+mVRQNuz7DbAsYgIFCy3hc8gq7X37Pd5assqcqTpWoQdkWHJWWpgM1FXmgct5NH/i
+rHOI7nq4ZJVAGiNSPNbWMBrPBOKS2jFhyibRgM72iVESxiGtcIisPyjjDxPBnRhy
+8i1LmSimKB/RkR+aROvEx+by8yUT4DK/TLN5PvIFvepPp/f3fMBwIvytltX8rb1E
+7D/1qbX7RSglUS6Qc5yz1M4uN45SnqYwkDc=
+-----END CERTIFICATE-----
+
+EOT
+certificate_authority_private_key = &lt;&lt;EOT
+-----BEGIN RSA PRIVATE KEY-----
+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
+-----END RSA PRIVATE KEY-----
+
+EOT
+server_certificates = {
+  &quot;server-1&quot; = {
+    &quot;certificate&quot; = &lt;&lt;-EOT
+    -----BEGIN CERTIFICATE-----
+    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
+    -----END CERTIFICATE-----
+
+    EOT
+    &quot;csr&quot; = &lt;&lt;-EOT
+    -----BEGIN CERTIFICATE REQUEST-----
+    MIIEozCCAosCAQAwXjELMAkGA1UEBhMCREUxDzANBgNVBAcTBk11bmljaDEQMA4G
+    A1UEChMHY29udG9zbzENMAsGA1UECxMEc2l0ZTEdMBsGA1UEAxMUc2VydmVyMS5z
+    aXRlLmNvbnRvc28wggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCyJiHh
+    hOpwqH156HMeOw1wd0UlSalmvAt7GMcLi0ZDRQHNI/h5lmGhzKfhNpnO37gqWXmd
+    4VSPoSl5259hPW3eymQwZnoH5IdS5WYUObDdzgGsmzEFUoewujM7ktZ4Bu5UUMch
+    elB/LxSz3zPHhV+UAgpCdqet9+IM3xk/6558FzhJxBx0yqmEGWIP222cO0QTqgcq
+    IGXKoOz1W2UhOkoe3hJoTd9mJRHHwXZPph04NXCX2GRgbb+izwXWNbNoC2BiD/uT
+    UX9GfS/yHEzGR0sRsNa0GykTNMzj6qfXlBrUrsYQbTgrTsPWRsebuJESfzu1lzM5
+    SOQaABU4EmOKEWrZZ923wOwm+SX/nQNkLtiQwWdhMsfzrm0r563ARRsZ3Hu4IP1N
+    2laCBa+H+dWmF0PuabWhB3eRlYhKOnuUdJl/x4loAlfjOImfOvvSs0wboskkJ6ro
+    5qghiKhkjYRLYxKB2kr4q4kkuiK+h1ZZy/AFnAoOKzRwpUgX8juEtc0VUWRG8nn4
+    xfQuWiHDk+9rEYOqSY/E9M47v3JeYLwVMKLACSkCDnL606K8VSs9WqxE+6Yg+abn
+    Zule7Kbk1lsBw/spW92fkdMmjlysJxAQsvTOjCPudJRrD0CYny/oC0ctYOyBEuSN
+    RWsfZOHe/+fw2UqlM03H0Pa1cNc2toOH3Jq22QIDAQABoAAwDQYJKoZIhvcNAQEL
+    BQADggIBADfosAFtL7G2BGo8stSXnGSEAejY7AfJbWy2aQ0YF1OqsQvBPnGhlMub
+    mffpOvmhgB2tYCkyzQEqTQgTDAjA+djH/WpPWT2RY0873wRWSs74gAJXlF3S8MVN
+    VF8DKYPaE3eyMaM3ESbvmD2+naSyBqrnzg6G2AZcgoZ2aHEfkyGzwGoe49bC1rav
+    5E/XEWcibxZ1LFOPSGkVGwM8pSGbKBRKW2skxPssPwQskE1YCu1dP7JOnl4RJ5Ev
+    6com0tkBfmcpO5S4U1QmtTfSQJVCyZOnjxR5uOu+4rthwqkOsy8qzZg4II8TLf5J
+    kvmxS4t0QaLAQoo0uVQ+YsKlePQQelm+A94Bg4BlXVUGolXifbMdymfiM9fuRnFn
+    sQNGS8p7EwkIpIKBK9iFbrjCERRXZVHXRzLiXEBi4CMw2MvVupzqntMAbZaURoeu
+    9v+1qDaVL2CHzu+SxbL/F8CyDO8g7It/CmeplBlcVBV+nl3ZXBX/WrX/h8hTiasx
+    axV/ZfGBhEDh8hx0tN8nJYq08G6HkujohDIX6w+48cazLYhyrvhSgq/8IPdx3vfy
+    9+iOGmZqebjrWdxBbJAE85b/eK2gwMZ1F8nvX6GX6wJXVhfQVqZWRI6N0vl45Wmi
+    PdUvGRI1nrQzgaf/9u9DAGMj7JVphupOMMuglK5Wq0pWDbNf1FBb
+    -----END CERTIFICATE REQUEST-----
+
+    EOT
+    &quot;private_key&quot; = &lt;&lt;-EOT
+    -----BEGIN RSA PRIVATE KEY-----
+    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
+    -----END RSA PRIVATE KEY-----
+
+    EOT
+  }
+  &quot;server-2&quot; = {
+    &quot;certificate&quot; = &lt;&lt;-EOT
+    -----BEGIN CERTIFICATE-----
+    MIIFJTCCAw2gAwIBAgIRAMI6mmqNkI7hdhndUh8qkPswDQYJKoZIhvcNAQELBQAw
+    VjELMAkGA1UEBhMCREUxDzANBgNVBAcTBk11bmljaDEQMA4GA1UEChMHY29udG9z
+    bzENMAsGA1UECxMEc2l0ZTEVMBMGA1UEAxMMc2l0ZS5jb250b3NvMB4XDTI0MDQy
+    NjIzMTQzOFoXDTI1MDQyNjIzMTQzOFowHzEdMBsGA1UEAxMUc2VydmVyMi5zaXRl
+    LmNvbnRvc28wggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDVELHPd2Zd
+    82Y88siMRQtQHSAx9MvfCZQwcVbZFfPjAOI7Rpi3mD/X6c/K40sZMLdx7sDSIxaF
+    xQNKpP18kor6aChrV23ThCQdogadHAHDkvJJW75SyzRneNTAb0AwY3BwBVx+E6RX
+    mf4fHKM8MGD2J7P0Q5WXZGGRGagTUhECgdTg/21yjm7KehNynKPOxXEWLOGE+/To
+    403vmCL+8+WbE9jT0kJTxbhSvCUpeZdFecG492ymIemjWQZ3x+hB0uTqodAbX92I
+    DsC7sQV/GZCGRiovMCaLPvNItLAsP00dEHgQNv+ATOtaDaEfjdu2CSB0zInNAJKL
+    IgJ9r/rdgqYQGrLXB59lg0VtqkeQAEv634STHxDjRWys9ZhsJmOtlhqwwU20+g0i
+    mrCTAGpv6SQC11yqrh5LzlFFXIJlCCGhazrJgNAV3tZaHPHqLOhL2a88IPnPK74U
+    C1s/TPyU1RSwy9gziSWr4FCYxKR07m39hCo+TDniNTBayZ8gtwDg2qQ7g/GN8Q4Q
+    8dM8UNRs76elLPT8y3l1MpAF9RZyZDEaR4uOBdxHo9dKNs1Jn+1neCNHllBU6AIG
+    50c6ddOnTZQxz+aHjx5GV4oXaViRgcoTwpb9OQBIqsJwC/bCgPsh/LL5xd25Hx0M
+    hGXOFLPm+k2rqhgDntcRbarEZ6SITdn4LwIDAQABoyUwIzATBgNVHSUEDDAKBggr
+    BgEFBQcDATAMBgNVHRMBAf8EAjAAMA0GCSqGSIb3DQEBCwUAA4ICAQCKv/pvufFQ
+    KYnulXBp/nOSlhsDraFrSlq4zNIf74lpZQxSaawx0afFqiXqn1qIsRTGXtbxcARz
+    QXKvmDs6pfIj1yvlS2+byXXSbbQmJI1OD1jtpmAim965A9q4Fc8ubDY1XoOPPpnh
+    de8YNClES23FIZ4f4BimFNB+FltmhbUcxLYCMSZxvxi+0lu7uPnvXqnkfeaAYR24
+    bPeVOqJs4/84gYY5dg+PwXxVcdqf3+CbOiynlVtPID26cAMDeZgLO7KhSXD3DWZL
+    7GS/EB1EqOGstJO4d3ggZYjGwW4DOSZq3wylOdCyBvkHmj/sr6VwPknT8h5sU1P/
+    E1l64drlw+PhFj4uEi9+aGK41MNxkyiRCtfTHdwhBqyn3CzAchavvku++1MzAjJb
+    Gtbj+lLIyAKSeBflF0OmCN8I370oEGXq9mprBKEOjFJipn8FuiCFIoGAe1o2T03H
+    mXO0R4UD9Vuq4sx54hsYSDn/4VJ/59Bs2LbXh+ewNAKSIGF5Puv9wbc2Yxjgcl6K
+    pjCaFv219chLn3XPlpgP/ih20kOxRHF1oyMQmBD5dua/R2MubO94VPDCxhVUTAnJ
+    b+r+0EW20A2n0WvZ9aE+2Vw8fEtNNadBL/yKNqvk7/zDWWp1IBLHaJtwHEnkZRF2
+    Fpp5q5uDTWI30t0EKYTUoFpa+mgDG8n1ew==
+    -----END CERTIFICATE-----
+
+    EOT
+    &quot;csr&quot; = &lt;&lt;-EOT
+    -----BEGIN CERTIFICATE REQUEST-----
+    MIIEZDCCAkwCAQAwHzEdMBsGA1UEAxMUc2VydmVyMi5zaXRlLmNvbnRvc28wggIi
+    MA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDVELHPd2Zd82Y88siMRQtQHSAx
+    9MvfCZQwcVbZFfPjAOI7Rpi3mD/X6c/K40sZMLdx7sDSIxaFxQNKpP18kor6aChr
+    V23ThCQdogadHAHDkvJJW75SyzRneNTAb0AwY3BwBVx+E6RXmf4fHKM8MGD2J7P0
+    Q5WXZGGRGagTUhECgdTg/21yjm7KehNynKPOxXEWLOGE+/To403vmCL+8+WbE9jT
+    0kJTxbhSvCUpeZdFecG492ymIemjWQZ3x+hB0uTqodAbX92IDsC7sQV/GZCGRiov
+    MCaLPvNItLAsP00dEHgQNv+ATOtaDaEfjdu2CSB0zInNAJKLIgJ9r/rdgqYQGrLX
+    B59lg0VtqkeQAEv634STHxDjRWys9ZhsJmOtlhqwwU20+g0imrCTAGpv6SQC11yq
+    rh5LzlFFXIJlCCGhazrJgNAV3tZaHPHqLOhL2a88IPnPK74UC1s/TPyU1RSwy9gz
+    iSWr4FCYxKR07m39hCo+TDniNTBayZ8gtwDg2qQ7g/GN8Q4Q8dM8UNRs76elLPT8
+    y3l1MpAF9RZyZDEaR4uOBdxHo9dKNs1Jn+1neCNHllBU6AIG50c6ddOnTZQxz+aH
+    jx5GV4oXaViRgcoTwpb9OQBIqsJwC/bCgPsh/LL5xd25Hx0MhGXOFLPm+k2rqhgD
+    ntcRbarEZ6SITdn4LwIDAQABoAAwDQYJKoZIhvcNAQELBQADggIBADIQsD986FrA
+    rLrHS5wLpH3uSBytSRqkGQORhQjiByRNz9pYH6WG4GXu9T/OrB++DoV34UaCHhXt
+    sF5Y5C6hAvpXq7A4RsFByfMd1i1n5rFOE2+X8TOlF8dpIgWfPBfq8jdm3O5A96uH
+    /lanodw35Hqlfu7e61NI4GrfBaMKLuItGc1DWmFpLXI19xSZHfLnoEOzZrEtcoo0
+    bewraE5VvxNVLg1J5iHu3YtPRA/a6XLPa53BcO0ZHbxkZZf4DgexIHpx5zY50t+2
+    Z69F8zy7TQnjsZ0MrOmyxwA1z8ZHdwEWPWNf64Hb+JEkn7mZblTSOaQF7u1l1yD+
+    AeIDLAFLgKWx6C2o62cXa6nrWrkClY6cbS+08espqi7iUzzeV4OuJW+cIU2qq/2G
+    A74SjMQ+FnjJ1OMl9YuylAZSIiqTZpxdzzwd+QhFI/MqJCkof53tskk/F2CVwUB0
+    ySDHLVr/DlrX22lCwBP+v817OvfQT13dqSQQ35OljvCifj31hvLwi7znQhhHeH1s
+    OAfJLn7rkQEIGBF+UDJZ2zPYhpS6cjznUeclQQGXPJVbHSUeexwCVb7utBihoop0
+    jYvAYdI+rU9dDgfmQqueddLpifbcDCWko71sqiNlAAMyrdTKAFjsmjSCHqx6bOCD
+    j9d78D3PkmyuPr8t0vBaSo4UTRg+06oX
+    -----END CERTIFICATE REQUEST-----
+
+    EOT
+    &quot;private_key&quot; = &lt;&lt;-EOT
+    -----BEGIN RSA PRIVATE KEY-----
+    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
+    -----END RSA PRIVATE KEY-----
+
+    EOT
+  }
+}
+
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Ujstor
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/ujstor" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.expand", "toc.flow", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+    
+  </body>
+</html>

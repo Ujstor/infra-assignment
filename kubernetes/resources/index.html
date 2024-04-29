@@ -1,0 +1,2431 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Infra assignment">
+      
+      
+      
+        <link rel="canonical" href="https://ujstor.github.io/infra-assignment/kubernetes/resources/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../start-cluster/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
+    
+    
+      
+        <title>Resources - Infra assignment</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+    
+      
+    
+    <script defer data-domain="ujstor.github.io/infra-assignment" src="https://analytics.ujstor.com/js/script.js"></script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cassandra-chart-readme" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Infra assignment" class="md-header__button md-logo" aria-label="Infra assignment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Infra assignment
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Resources
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Ujstor/infra-assignment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Infra assignment" class="md-nav__button md-logo" aria-label="Infra assignment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Infra assignment
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Ujstor/infra-assignment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Terraform
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Terraform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assigment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resurces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/output-cert/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Output Cert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/output-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Output API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assigment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cassandra-chart-readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cassandra chart readme
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-ready-charts-with-containers-from-marketplaceazurecrio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure-ready Charts with Containers from marketplace.azurecr.io
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      TL;DR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing the Chart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstalling the Chart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cassandra-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cassandra parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statefulset-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statefulset parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbac-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      RBAC parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-exposure-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traffic Exposure Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistence parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volume-permissions-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volume Permissions parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsssl-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS/SSL parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration and installation details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rolling vs Immutable tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable TLS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-a-custom-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use a custom configuration file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-the-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialize the database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-pod-affinity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set pod affinity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjust-permissions-of-persistent-volume-mountpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjust permissions of persistent volume mountpoint
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-and-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup and restore
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-800" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 8.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-700" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 7.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-600" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 6.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-540" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 5.4.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-500" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 5.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-400" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 4.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-200" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 2.0.0
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="To 2.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Breaking changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../start-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Start cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cassandra-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cassandra cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csql-statements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSQL statements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nodes-admin-cassandra-availability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node admin & cassandra availability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cassandra-chart-readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cassandra chart readme
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-ready-charts-with-containers-from-marketplaceazurecrio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure-ready Charts with Containers from marketplace.azurecr.io
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      TL;DR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing the Chart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstalling the Chart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cassandra-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cassandra parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statefulset-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statefulset parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbac-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      RBAC parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-exposure-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traffic Exposure Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistence parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volume-permissions-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volume Permissions parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsssl-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS/SSL parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration and installation details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rolling vs Immutable tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable TLS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-a-custom-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use a custom configuration file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-the-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialize the database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-pod-affinity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set pod affinity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjust-permissions-of-persistent-volume-mountpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjust permissions of persistent volume mountpoint
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-and-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup and restore
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-800" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 8.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-700" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 7.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-600" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 6.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-540" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 5.4.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-500" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 5.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-400" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 4.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-200" class="md-nav__link">
+    <span class="md-ellipsis">
+      To 2.0.0
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="To 2.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Breaking changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Resources</h1>
+
+<ul>
+<li><a href="https://artifacthub.io/packages/helm/bitnami-aks/cassandra/8.0.2">Cassandra helm repo for Azure k8s</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node">Pod Affinity Anti-Affinity</a></li>
+<li><a href="https://docs.datastax.com/en/archived/cassandra/2.0/cassandra/operations/ops_tune_jvm_c.html">Tuning JVM</a></li>
+<li><a href="https://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architecturePlanningHardware_c.html">Required CPU and Memory</a></li>
+<li><a href="https://www.baeldung.com/cassandra-replication-partitioning">Cassandra replocation</a></li>
+<li><a href="https://docs.datastax.com/en/cql/cassandra/docs/index.html">csql</a></li>
+<li><a href="https://cassandra.apache.org/doc/latest/cassandra/troubleshooting/use_nodetool.html">NodeTool</a></li>
+<li><a href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_cordon/">kubectl cordon</a></li>
+<li><a href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_drain/">kubectl drain</a></li>
+</ul>
+<h2 id="cassandra-chart-readme">Cassandra chart readme</h2>
+<p><a href="https://cassandra.apache.org">Apache Cassandra</a> is a free and open-source distributed database management system designed to handle large amounts of data across many commodity servers or datacenters.</p>
+<h2 id="azure-ready-charts-with-containers-from-marketplaceazurecrio">Azure-ready Charts with Containers from marketplace.azurecr.io</h2>
+<p>This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
+The following command allows you to download and install all the charts from this repository.</p>
+<pre><code class="language-bash">$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
+</code></pre>
+<h2 id="tldr">TL;DR</h2>
+<pre><code class="language-console">$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
+$ helm install my-release bitnami-azure/cassandra
+</code></pre>
+<h2 id="introduction">Introduction</h2>
+<p>This chart bootstraps an <a href="https://github.com/bitnami/bitnami-docker-cassandra">Apache Cassandra</a> deployment on a <a href="http://kubernetes.io">Kubernetes</a> cluster using the <a href="https://helm.sh">Helm</a> package manager.</p>
+<p>Bitnami charts can be used with <a href="https://kubeapps.com/">Kubeapps</a> for deployment and management of Helm Charts in clusters. This Helm chart has been tested on top of <a href="https://kubeprod.io/">Bitnami Kubernetes Production Runtime</a> (BKPR). Deploy BKPR to get automated TLS certificates, logging and monitoring for your applications.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Kubernetes 1.12+</li>
+<li>Helm 3.1.0</li>
+<li>PV provisioner support in the underlying infrastructure</li>
+</ul>
+<h2 id="installing-the-chart">Installing the Chart</h2>
+<p>To install the chart with the release name <code>my-release</code>:</p>
+<pre><code class="language-console">$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
+$ helm install my-release bitnami-azure/cassandra
+</code></pre>
+<p>These commands deploy one node with Apache Cassandra on the Kubernetes cluster in the default configuration. The <a href="#parameters">Parameters</a> section lists the parameters that can be configured during installation.</p>
+<blockquote>
+<p><strong>Tip</strong>: List all releases using <code>helm list</code></p>
+</blockquote>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart</h2>
+<p>To uninstall/delete the <code>my-release</code> release:</p>
+<pre><code class="language-console">$ helm delete my-release
+</code></pre>
+<p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="global-parameters">Global parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.imageRegistry</code></td>
+<td>Global Docker image registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.imagePullSecrets</code></td>
+<td>Global Docker registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>global.storageClass</code></td>
+<td>Global StorageClass for Persistent Volume(s)</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-parameters">Common parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nameOverride</code></td>
+<td>String to partially override common.names.fullname</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>String to fully override common.names.fullname</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>commonLabels</code></td>
+<td>Labels to add to all deployed objects (sub-charts are not considered)</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>commonAnnotations</code></td>
+<td>Annotations to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>clusterDomain</code></td>
+<td>Kubernetes cluster domain name</td>
+<td><code>cluster.local</code></td>
+</tr>
+<tr>
+<td><code>extraDeploy</code></td>
+<td>Array of extra objects to deploy with the release</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.enabled</code></td>
+<td>Enable diagnostic mode (all probes will be disabled and the command will be overridden)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.command</code></td>
+<td>Command to override all containers in the deployment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.args</code></td>
+<td>Args to override all containers in the deployment</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cassandra-parameters">Cassandra parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image.registry</code></td>
+<td>Cassandra image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>image.repository</code></td>
+<td>Cassandra image repository</td>
+<td><code>bitnami/cassandra</code></td>
+</tr>
+<tr>
+<td><code>image.tag</code></td>
+<td>Cassandra image tag (immutable tags are recommended)</td>
+<td><code>3.11.10-debian-10-r149</code></td>
+</tr>
+<tr>
+<td><code>image.pullPolicy</code></td>
+<td>image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>image.pullSecrets</code></td>
+<td>Cassandra image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>image.debug</code></td>
+<td>Enable image debug mode</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>dbUser.user</code></td>
+<td>Cassandra admin user</td>
+<td><code>cassandra</code></td>
+</tr>
+<tr>
+<td><code>dbUser.forcePassword</code></td>
+<td>Force the user to provide a non</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>dbUser.password</code></td>
+<td>Password for <code>dbUser.user</code>. Randomly generated if empty</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>dbUser.existingSecret</code></td>
+<td>Use an existing secret object for <code>dbUser.user</code> password (will ignore <code>dbUser.password</code>)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>initDBConfigMap</code></td>
+<td>ConfigMap with cql scripts. Useful for creating a keyspace and pre-populating data</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>initDBSecret</code></td>
+<td>Secret with cql script (with sensitive data). Useful for creating a keyspace and pre-populating data</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>existingConfiguration</code></td>
+<td>ConfigMap with custom cassandra configuration files. This overrides any other Cassandra configuration set in the chart</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>cluster.name</code></td>
+<td>Cassandra cluster name</td>
+<td><code>cassandra</code></td>
+</tr>
+<tr>
+<td><code>cluster.seedCount</code></td>
+<td>Number of seed nodes</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>cluster.numTokens</code></td>
+<td>Number of tokens for each node</td>
+<td><code>256</code></td>
+</tr>
+<tr>
+<td><code>cluster.datacenter</code></td>
+<td>Datacenter name</td>
+<td><code>dc1</code></td>
+</tr>
+<tr>
+<td><code>cluster.rack</code></td>
+<td>Rack name</td>
+<td><code>rack1</code></td>
+</tr>
+<tr>
+<td><code>cluster.endpointSnitch</code></td>
+<td>Endpoint Snitch</td>
+<td><code>SimpleSnitch</code></td>
+</tr>
+<tr>
+<td><code>cluster.internodeEncryption</code></td>
+<td>DEPRECATED: use tls.internode and tls.client instead. Encryption values.</td>
+<td><code>none</code></td>
+</tr>
+<tr>
+<td><code>cluster.clientEncryption</code></td>
+<td>Client Encryption</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cluster.extraSeeds</code></td>
+<td>For an external/second cassandra ring.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>jvm.extraOpts</code></td>
+<td>Set the value for Java Virtual Machine extra options</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>jvm.maxHeapSize</code></td>
+<td>Set Java Virtual Machine maximum heap size (MAX_HEAP_SIZE). Calculated automatically if <code>nil</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>jvm.newHeapSize</code></td>
+<td>Set Java Virtual Machine new heap size (HEAP_NEWSIZE). Calculated automatically if <code>nil</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td>Command for running the container (set to default if not set). Use array form</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td>Args for running the container (set to default if not set). Use array form</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVars</code></td>
+<td>Extra environment variables to be set on cassandra container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="statefulset-parameters">Statefulset parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>replicaCount</code></td>
+<td>Number of Cassandra replicas</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>updateStrategy</code></td>
+<td>updateStrategy for Cassandra statefulset</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>hostAliases</code></td>
+<td>Add deployment host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rollingUpdatePartition</code></td>
+<td>Partition update strategy</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>podManagementPolicy</code></td>
+<td>StatefulSet pod management policy</td>
+<td><code>OrderedReady</code></td>
+</tr>
+<tr>
+<td><code>priorityClassName</code></td>
+<td>Cassandra pods' priority.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>podAnnotations</code></td>
+<td>Additional pod annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podLabels</code></td>
+<td>Additional pod labels</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>affinity</code></td>
+<td>Affinity for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>nodeSelector</code></td>
+<td>Node labels for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>tolerations</code></td>
+<td>Tolerations for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.enabled</code></td>
+<td>Enabled Cassandra pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.fsGroup</code></td>
+<td>Set Cassandra pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.enabled</code></td>
+<td>Enabled Cassandra containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.runAsUser</code></td>
+<td>et Cassandra container's Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>resources.limits</code></td>
+<td>The resources limits for Cassandra containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>resources.requests</code></td>
+<td>The requested resources for Cassandra containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.enabled</code></td>
+<td>Enable livenessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>60</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.enabled</code></td>
+<td>Enable readinessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>60</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for cassandra container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for cassandra container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>initContainers</code></td>
+<td>Add additional init containers to the cassandra pods</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>sidecars</code></td>
+<td>Add additional sidecar containers to the cassandra pods</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>pdb.create</code></td>
+<td>Enable/disable a Pod Disruption Budget creation</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>pdb.minAvailable</code></td>
+<td>Mininimum number of pods that must still be available after the eviction</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>pdb.maxUnavailable</code></td>
+<td>Max number of pods that can be unavailable after the eviction</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>hostNetwork</code></td>
+<td>Enable HOST Network</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.intra</code></td>
+<td>Intra Port on the Host and Container</td>
+<td><code>7000</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.tls</code></td>
+<td>TLS Port on the Host and Container</td>
+<td><code>7001</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.jmx</code></td>
+<td>JMX Port on the Host and Container</td>
+<td><code>7199</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.cql</code></td>
+<td>CQL Port on the Host and Container</td>
+<td><code>9042</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rbac-parameters">RBAC parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>serviceAccount.create</code></td>
+<td>Enable the creation of a ServiceAccount for Cassandra pods</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.name</code></td>
+<td>The name of the ServiceAccount to use.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.annotations</code></td>
+<td>Annotations for Cassandra Service Account</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="traffic-exposure-parameters">Traffic Exposure Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>service.type</code></td>
+<td>Cassandra service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>service.port</code></td>
+<td>Cassandra service CQL Port</td>
+<td><code>9042</code></td>
+</tr>
+<tr>
+<td><code>service.metricsPort</code></td>
+<td>Cassandra service metrics port</td>
+<td><code>8080</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.cql</code></td>
+<td>Node port for CQL</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.metrics</code></td>
+<td>Node port for metrics</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerIP</code></td>
+<td>LoadBalancerIP if service type is <code>LoadBalancer</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.annotations</code></td>
+<td>Provide any additional annotations which may be required.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.enabled</code></td>
+<td>Specifies whether a NetworkPolicy should be created</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.allowExternal</code></td>
+<td>Don't require client label for connections</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="persistence-parameters">Persistence parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>persistence.enabled</code></td>
+<td>Enable Cassandra data persistence using PVC, use a Persistent Volume Claim, If false, use emptyDir</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>persistence.storageClass</code></td>
+<td>PVC Storage Class for Cassandra data volume</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.commitStorageClass</code></td>
+<td>PVC Storage Class for Cassandra Commit Log volume</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.annotations</code></td>
+<td>Persistent Volume Claim annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>persistence.accessModes</code></td>
+<td>Persistent Volume Access Mode</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>persistence.size</code></td>
+<td>PVC Storage Request for Cassandra data volume</td>
+<td><code>8Gi</code></td>
+</tr>
+<tr>
+<td><code>persistence.mountPath</code></td>
+<td>The path the data volume will be mounted at</td>
+<td><code>/bitnami/cassandra</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="volume-permissions-parameters">Volume Permissions parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>volumePermissions.enabled</code></td>
+<td>Enable init container that changes the owner and group of the persistent volume</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.registry</code></td>
+<td>Init container volume</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.repository</code></td>
+<td>Init container volume</td>
+<td><code>bitnami/bitnami-shell</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.tag</code></td>
+<td>Init container volume</td>
+<td><code>10-debian-10-r138</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullPolicy</code></td>
+<td>Init container volume</td>
+<td><code>Always</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullSecrets</code></td>
+<td>Specify docker-registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.limits</code></td>
+<td>The resources limits for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.requests</code></td>
+<td>The requested resources for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.securityContext.runAsUser</code></td>
+<td>User ID for the init container</td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metrics-parameters">Metrics parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>metrics.enabled</code></td>
+<td>Start a side-car prometheus exporter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.registry</code></td>
+<td>Cassandra exporter image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.repository</code></td>
+<td>Cassandra exporter image name</td>
+<td><code>bitnami/cassandra-exporter</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.tag</code></td>
+<td>Cassandra exporter image tag</td>
+<td><code>2.3.4-debian-10-r463</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.pullPolicy</code></td>
+<td>image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.pullSecrets</code></td>
+<td>Specify docker-registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.resources.limits</code></td>
+<td>The resources limits for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.resources.requests</code></td>
+<td>The requested resources for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.podAnnotations</code></td>
+<td>Metrics exporter pod Annotation and Labels</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.enabled</code></td>
+<td>If <code>true</code>, creates a Prometheus Operator ServiceMonitor (also requires <code>metrics.enabled</code> to be <code>true</code>)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.namespace</code></td>
+<td>Namespace in which Prometheus is running</td>
+<td><code>monitoring</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.interval</code></td>
+<td>Interval at which metrics should be scraped.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.scrapeTimeout</code></td>
+<td>Timeout after which the scrape is ended</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.selector</code></td>
+<td>Prometheus instance selector labels</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.containerPorts.http</code></td>
+<td>HTTP Port on the Host and Container</td>
+<td><code>8080</code></td>
+</tr>
+<tr>
+<td><code>metrics.containerPorts.jmx</code></td>
+<td>JMX Port on the Host and Container</td>
+<td><code>5555</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tlsssl-parameters">TLS/SSL parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tls.internodeEncryption</code></td>
+<td>Set internode encryption</td>
+<td><code>none</code></td>
+</tr>
+<tr>
+<td><code>tls.clientEncryption</code></td>
+<td>Set client-server encryption</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>tls.autoGenerated</code></td>
+<td>Generate automatically self-signed TLS certificates. Currently only supports PEM certificates</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>tls.existingSecret</code></td>
+<td>Existing secret that contains Cassandra Keystore and truststore</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tls.passwordsSecret</code></td>
+<td>Secret containing the Keystore and Truststore passwords if needed</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tls.keystorePassword</code></td>
+<td>Password for the keystore, if needed.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tls.truststorePassword</code></td>
+<td>Password for the truststore, if needed.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tls.resources.limits</code></td>
+<td>The resources limits for the TLS init container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>tls.resources.requests</code></td>
+<td>The requested resources for the TLS init container</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<p>The above parameters map to the env variables defined in <a href="http://github.com/bitnami/bitnami-docker-cassandra">bitnami/cassandra</a>. For more information please refer to the <a href="http://github.com/bitnami/bitnami-docker-cassandra">bitnami/cassandra</a> image documentation.</p>
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code> argument to <code>helm install</code>. For example,</p>
+<pre><code class="language-console">helm install my-release \
+    --set dbUser.user=admin,dbUser.password=password \
+    bitnami-azure/cassandra
+</code></pre>
+<p>Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,</p>
+<pre><code class="language-console">helm install my-release -f values.yaml bitnami-azure/cassandra
+</code></pre>
+<blockquote>
+<p><strong>Tip</strong>: You can use the default values.yaml</p>
+</blockquote>
+<h2 id="configuration-and-installation-details">Configuration and installation details</h2>
+<h3 id="rolling-vs-immutable-tags"><a href="https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/">Rolling vs Immutable tags</a></h3>
+<p>It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.</p>
+<p>Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.</p>
+<h3 id="enable-tls">Enable TLS</h3>
+<p>This chart supports TLS between client and server and between nodes, as explained below:</p>
+<ul>
+<li>For internode cluster encryption, set the <code>cluster.internodeEncryption</code> chart parameter to a value different from <code>none</code>. Available values are <code>all</code>, <code>dc</code> or <code>rack</code>.</li>
+<li>For client-server encryption, set the <code>cluster.clientEncryption</code> chart parameter to <code>true</code>.</li>
+</ul>
+<p>In both cases, it is also necessary to create a secret containing the keystore and truststore certificates and their corresponding protection passwords. This secret is to be passed to the chart via the <code>tlsEncryptionSecretName</code> parameter at deployment-time.</p>
+<p>Refer to the chart documentation for more <a href="https://docs.bitnami.com/kubernetes/infrastructure/cassandra/administration/enable-tls/">information on creating the secret and a TLS deployment example</a>.</p>
+<h3 id="use-a-custom-configuration-file">Use a custom configuration file</h3>
+<p>This chart also supports mounting custom configuration file(s) for Apache Cassandra. This is achieved by setting the <code>existingConfiguration</code> parameter with the name of a ConfigMap that includes the custom configuration file(s).</p>
+<blockquote>
+<p>NOTE: This ConfigMap will override other Apache Cassandra configuration variables set in the chart.</p>
+</blockquote>
+<p>Refer to the chart documentation for more <a href="https://docs.bitnami.com/kubernetes/infrastructure/cassandra/configuration/customize-new-instance/">information on customizing an Apache Cassandra deployment</a>.</p>
+<h3 id="initialize-the-database">Initialize the database</h3>
+<p>The <a href="https://github.com/bitnami/bitnami-docker-cassandra">Bitnami Apache Cassandra image</a> image supports the use of custom scripts to initialize a fresh instance. This may be done by creating a Kubernetes ConfigMap that includes the necessary <em>sh</em> or <em>cql</em> scripts and passing this ConfigMap to the chart via the <em>initDBConfigMap</em> parameter.</p>
+<p>Refer to the chart documentation for more <a href="https://docs.bitnami.com/kubernetes/infrastructure/cassandra/configuration/customize-new-instance/">information on customizing an Apache Cassandra deployment</a>.</p>
+<h3 id="set-pod-affinity">Set pod affinity</h3>
+<p>This chart allows you to set custom pod affinity using the <code>XXX.affinity</code> parameter(s). Find more information about pod affinity in the <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">Kubernetes documentation</a>.</p>
+<p>As an alternative, you can use the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the <a href="https://github.com/bitnami/charts/tree/master/bitnami/common#affinities">bitnami/common</a> chart. To do so, set the <code>XXX.podAffinityPreset</code>, <code>XXX.podAntiAffinityPreset</code>, or <code>XXX.nodeAffinityPreset</code> parameters.</p>
+<h2 id="persistence">Persistence</h2>
+<p>The <a href="https://github.com/bitnami/bitnami-docker-cassandra">Bitnami Apache Cassandra</a> image stores the Apache Cassandra data at the <code>/bitnami/cassandra</code> path of the container.</p>
+<p>Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
+See the <a href="#parameters">Parameters</a> section to configure the PVC or to disable persistence.</p>
+<p>If you encounter errors when working with persistent volumes, refer to our <a href="https://docs.bitnami.com/kubernetes/faq/troubleshooting/troubleshooting-persistence-volumes/">troubleshooting guide for persistent volumes</a>.</p>
+<h3 id="adjust-permissions-of-persistent-volume-mountpoint">Adjust permissions of persistent volume mountpoint</h3>
+<p>As the image run as non-root by default, it is necessary to adjust the ownership of the persistent volume so that the container can write data into it. There are two approaches to achieve this:</p>
+<ul>
+<li>Use Kubernetes SecurityContexts by setting the <code>podSecurityContext.enabled</code> and <code>containerSecurityContext.enabled</code> to <code>true</code>. This option is enabled by default in the chart. However, this feature does not work in all Kubernetes distributions.</li>
+<li>Use an init container to change the ownership of the volume before mounting it in the final destination. Enable this container by setting the <code>volumePermissions.enabled</code> parameter to <code>true</code>.</li>
+</ul>
+<h2 id="backup-and-restore">Backup and restore</h2>
+<p>Refer to our detailed tutorial on <a href="https://docs.bitnami.com/tutorials/backup-restore-data-cassandra-kubernetes/">backing up and restoring Bitnami Apache Cassandra deployments on Kubernetes</a>.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Find more information about how to deal with common errors related to Bitnami’s Helm charts in <a href="https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues">this troubleshooting guide</a>.</p>
+<h2 id="upgrading">Upgrading</h2>
+<p>It's necessary to set the <code>dbUser.password</code> parameter when upgrading for readiness/liveness probes to work properly. When you install this chart for the first time, some notes will be displayed providing the credentials you must use. Please note down the password and run the command below to upgrade your chart:</p>
+<pre><code class="language-bash">$ helm upgrade my-release bitnami-azure/cassandra --set dbUser.password=[PASSWORD]
+</code></pre>
+<p>| Note: you need to substitute the placeholder <em>[PASSWORD]</em> with the value obtained in the installation notes.</p>
+<h3 id="to-800">To 8.0.0</h3>
+<p>Cassandra's version was bumped to <code>4.0</code>, <a href="https://cassandra.apache.org/_/blog/Apache-Cassandra-4.0-is-Here.html">the new major</a> considered LTS. Among other features, this release removes support for <a href="https://issues.apache.org/jira/browse/CASSANDRA-11115">Thrift</a>, which means that the following properties of the chart will no longer be available:</p>
+<ul>
+<li><code>cluster.enableRPC</code></li>
+<li><code>service.thriftPort</code></li>
+<li><code>service.nodePorts.thrift</code></li>
+<li><code>containerPorts.thrift</code></li>
+</ul>
+<p>For this version, there have been <a href="https://cwiki.apache.org/confluence/display/CASSANDRA/4.0+Quality%3A+Components+and+Test+Plans">intensive efforts</a> from Apache to ensure that a safe cluster upgrade can be performed. Nevertheless, a backup creation prior to undergoing the upgrade process is recommended. Please, refer to the <a href="https://cassandra.apache.org/doc/latest/operating/backups.html#snapshots">official guide</a> for further information.</p>
+<h3 id="to-700">To 7.0.0</h3>
+<p><a href="https://github.com/helm/charts#status-of-the-project">On November 13, 2020, Helm v2 support was formally finished</a>, this major version is the result of the required changes applied to the Helm Chart to be able to incorporate the different features added in Helm v3 and to be consistent with the Helm project itself regarding the Helm v2 EOL.</p>
+<p><a href="https://docs.bitnami.com/kubernetes/infrastructure/cassandra/administration/upgrade-helm3/">Learn more about this change and related upgrade considerations</a>.</p>
+<h3 id="to-600">To 6.0.0</h3>
+<ul>
+<li>Several parameters were renamed or disappeared in favor of new ones on this major version:</li>
+<li><code>securityContext.*</code> is deprecated in favor of <code>podSecurityContext</code> and <code>containerSecurityContext</code>.</li>
+<li>Parameters prefixed with <code>statefulset.</code> were renamed removing the prefix. E.g. <code>statefulset.rollingUpdatePartition</code> -&gt; renamed to <code>rollingUpdatePartition</code>.</li>
+<li><code>cluster.replicaCount</code> is renamed to <code>replicaCount</code>.</li>
+<li><code>cluster.domain</code> is renamed to <code>clusterDomain</code>.</li>
+<li>Chart labels were adapted to follow the <a href="https://helm.sh/docs/chart_best_practices/labels/#standard-labels">Helm charts standard labels</a>.</li>
+<li>This version also introduces <code>bitnami/common</code>, a <a href="https://helm.sh/docs/topics/library_charts/#helm">library chart</a> as a dependency. More documentation about this new utility could be found <a href="https://github.com/bitnami/charts/tree/master/bitnami/common#bitnami-common-library-chart">here</a>. Please, make sure that you have updated the chart dependencies before executing any upgrade.</li>
+</ul>
+<p>Consequences:</p>
+<ul>
+<li>Backwards compatibility is not guaranteed. To upgrade to <code>6.0.0</code>, install a new release of the Cassandra chart, and migrate the data from your previous release. To do so, create an snapshot of the database, and restore it on the new database. Check <a href="https://cassandra.apache.org/doc/latest/operating/backups.html#snapshots">this guide</a> for more information.</li>
+</ul>
+<h3 id="to-540">To 5.4.0</h3>
+<p>The <code>minimumAvailable</code> option has been renamed to <code>minAvailable</code> for consistency with other charts. This is not a breaking change as <code>minimumAvailable</code> never worked before because of an error in chart templates.</p>
+<h3 id="to-500">To 5.0.0</h3>
+<p>An issue in StatefulSet manifest of the 4.x chart series rendered chart upgrades to be broken. The 5.0.0 series fixes this issue. To upgrade to the 5.x series you need to manually delete the Cassandra StatefulSet before executing the <code>helm upgrade</code> command.</p>
+<pre><code class="language-bash">kubectl delete sts -l release=&lt;RELEASE_NAME&gt;
+helm upgrade &lt;RELEASE_NAME&gt; ...
+</code></pre>
+<h3 id="to-400">To 4.0.0</h3>
+<p>This release changes uses Bitnami Cassandra container <code>3.11.4-debian-9-r188</code>, based on Bash.</p>
+<h3 id="to-200">To 2.0.0</h3>
+<p>This release make it possible to specify custom initialization scripts in both cql and sh files.</p>
+<h4 id="breaking-changes">Breaking changes</h4>
+<ul>
+<li><code>startupCQL</code> has been removed. Instead, for initializing the database, see <a href="#initializing-the-database">this section</a>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Ujstor
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/ujstor" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.expand", "toc.flow", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+    
+  </body>
+</html>

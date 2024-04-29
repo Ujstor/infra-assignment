@@ -30,4 +30,3 @@ No inputs.
 | Name | Description |
 |------|-------------|
 | <a name="output_internet_provider_info"></a> [internet\_provider\_info](#output\_internet\_provider\_info) | The internet provider info |
-

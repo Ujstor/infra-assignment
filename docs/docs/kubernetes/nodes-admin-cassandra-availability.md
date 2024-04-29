@@ -194,16 +194,3 @@ cassandra@cqlsh:store> SELECT * FROM shopping_cart;
 
 (3 rows)
 ```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
